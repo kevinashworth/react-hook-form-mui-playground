@@ -4,6 +4,7 @@ import Create from "./create";
 
 const FormIndex = () => {
   const defaultValues = {
+    name: "",
     street: "",
     city: "",
     state: "",
@@ -21,7 +22,5 @@ const FormIndex = () => {
     </FormProvider>
   );
 };
-
-FormIndex.propTypes = {};
 
 export default FormIndex;

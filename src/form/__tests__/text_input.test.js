@@ -10,7 +10,7 @@ const label = "Test Label";
 const maxLength = 127;
 const maxLengthForError = 7;
 const name = "testName";
-const value = "Test Value";
+const value = "This is what the user types in.";
 
 const Wrapped = (props) => {
   const methods = useForm({
@@ -77,7 +77,6 @@ describe("<TextInput />", () => {
     const user = userEvent.setup();
     render(
       <Wrapped
-        helperText={helperText}
         rules={{
           maxLength: {
             value: maxLengthForError,
@@ -86,19 +85,14 @@ describe("<TextInput />", () => {
         }}
       />
     );
-    expect(screen.getByText(helperText)).toBeInTheDocument();
     await user.click(screen.getByRole("textbox"));
     await user.keyboard(value);
-    await user.keyboard("{Tab}");
     expect(screen.getByText(value)).toBeInTheDocument();
     expect(
       screen.getByText(`${value.length}/${maxLengthForError}`)
     ).toBeInTheDocument();
-    await waitFor(
-      () => {
-        expect(screen.getByText(errorMessage)).toBeInTheDocument();
-      },
-      { timeout: 2000 }
-    );
+    await waitFor(() => {
+      expect(screen.getByText(errorMessage)).toBeInTheDocument();
+    });
   });
 });

@@ -1,4 +1,18 @@
-#Building a Material-UI form element powered by react-hook-form
+# Building a Material-UI form element powered by React Hook Form
+
+Demonstration of a reuseable controlled input built with useController
+and useFormContext. Works in my browser as desired, but fails unit test
+about the error message.
+
+## Libraries used
+
+[create-react-app](https://create-react-app.dev)
+
+[react-hook-form](https://react-hook-form.com)
+
+[Material-UI](https://v4.mui.com)
+
+## Development reports
 
 [Jest Report](https://htmlpreview.github.io/?https://github.com/kevinashworth/react-hook-form-mui-playground/blob/main/test-report.html)
 

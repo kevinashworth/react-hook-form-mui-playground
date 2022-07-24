@@ -52,7 +52,7 @@ const CancelEndAdornment = (props) => {
   );
 };
 
-const ErrorEndAdornment = (props) => {
+const ErrorEndAdornment = () => {
   const classes = useStyles();
   return (
     <InputAdornment position="end">
@@ -70,41 +70,20 @@ const ErrorEndAdornment = (props) => {
 };
 
 const TextInput = (props) => {
-  const {
-    helperText,
-    label,
-    name,
-    placeholder,
-    readOnly,
-    rules,
-    tabIndex,
-    variant,
-  } = props;
+  const { helperText, label, name, placeholder, readOnly, rules, variant } =
+    props;
   const { control, resetField } = useFormContext();
   const {
     field: { onBlur, onChange, ref, value },
-    formState: { errors },
+    fieldState: { error },
   } = useController({
     control,
     name,
     rules,
   });
-  // const [error, setError] = useState(undefined);
   const classes = useStyles();
 
-  // console.log({ errors })
-
-  // useEffect(() => {
-  //   const e = errors?.[name];
-  //   if (e) {
-  //     setError(e);
-  //   } else {
-  //     setError(undefined);
-  //   }
-  // });
-
   const charsLimit = rules?.maxLength?.value || undefined;
-  const error = _.get(errors, name);
   const htmlId = "text-input-" + name;
 
   const handleReset = () => {
@@ -142,11 +121,7 @@ const TextInput = (props) => {
           <TopLabel charsLimit={charsLimit} value={value} />
         </Typography>
       )}
-      <FormControl
-        fullWidth
-        color={readOnly ? "primary" : "secondary"}
-        tabIndex={tabIndex}
-      >
+      <FormControl fullWidth color={readOnly ? "primary" : "secondary"}>
         {label && (
           <InputLabel htmlFor={htmlId} required={rules?.required}>
             {label}
@@ -186,7 +161,6 @@ TextInput.propTypes = {
   placeholder: PropTypes.string,
   readOnly: PropTypes.bool,
   rules: PropTypes.object, // react-hook-form
-  tabIndex: PropTypes.number,
   variant: PropTypes.oneOf(["compact", "normal"]),
 };
 
@@ -195,7 +169,6 @@ TextInput.defaultProps = {
   label: "",
   placeholder: "",
   readOnly: false,
-  tabIndex: undefined,
   variant: "normal",
 };
 
