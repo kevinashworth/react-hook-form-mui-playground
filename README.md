@@ -1,6 +1,6 @@
 #Building a Material-UI form element powered by react-hook-form
 
-[Jest Report](/test-report.html)
+[Jest Report](https://htmlpreview.github.io/?https://github.com/kevinashworth/react-hook-form-mui-playground/blob/main/test-report.html)
 
 [Coverage Report](https://rhf-mui-coverage.netlify.app)
 
