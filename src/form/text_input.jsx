@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import clsx from "clsx";
 import _ from "lodash";
 import { useController, useFormContext } from "react-hook-form";
 import { makeStyles } from "@material-ui/core/styles";
@@ -18,19 +19,19 @@ import red from "@material-ui/core/colors/red";
 
 const useStyles = makeStyles((theme) => ({
   caption: {
-    color: grey[300],
+    color: grey[500],
     float: "right",
     fontSize: 12,
     transform: "translateY(15px)",
   },
   errorText: {
-    color: red[300],
+    color: red[700],
   },
   helperText: {
-    color: grey[300],
+    color: grey[500],
   },
   icon: {
-    color: grey[400],
+    color: grey[500],
   },
 }));
 
@@ -140,11 +141,10 @@ const TextInput = (props) => {
           endAdornment={<EndAdornment />}
         />
         <FormHelperText
-          classes={{
-            root: classes.helperText,
-            error: classes.errorText,
-          }}
-          error={!_.isNil(error)}
+          className={clsx({
+            [classes.helperText]: !error,
+            [classes.errorText]: error,
+          })}
           role={error ? "alert" : "note"}
         >
           {error ? error.message : helperText}

@@ -1,14 +1,18 @@
 import { createTheme } from "@material-ui/core/styles";
 import grey from "@material-ui/core/colors/grey";
 import indigo from "@material-ui/core/colors/indigo";
+import red from "@material-ui/core/colors/red";
 
 const theme = createTheme({
   palette: {
     primary: {
-      main: grey[800],
+      main: grey[900],
     },
     secondary: {
       main: indigo[600],
+    },
+    error: {
+      main: red[700],
     },
   },
   typography: {
