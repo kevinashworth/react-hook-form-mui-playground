@@ -4,7 +4,7 @@ import Create from "./create";
 
 const FormIndex = () => {
   const defaultValues = {
-    name: "",
+    name: "Kevin",
     street: "",
     city: "",
     state: "",
